@@ -38,13 +38,13 @@ abstract class BaseRepository implements IBaseRepository
         }
         return $query->paginate($perPage, $columns);
     }
-    public function find(int $id, array $columns = ['*'], array $relations = []): ?object
+    public function getById(int $id): object
     {
         $query = $this->model->newQuery();
         if (!empty($relations)) {
             $query->with($relations);
         }
-        return $query->find($id, $columns);
+        return $query->findOrFail($id);
     }
     public function create(array $data): object
     {

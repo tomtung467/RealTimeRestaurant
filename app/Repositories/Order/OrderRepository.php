@@ -13,4 +13,10 @@ class OrderRepository extends BaseRepository implements IOrderRepository
     {
         return Order::class;
     }
+    public function GetunpaidOrdersByTable($tableId)
+    {
+        return $this->model->where('table_id', $tableId)
+                           ->where('status', 'unpaid')
+                           ->get();
+    }
 }

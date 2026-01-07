@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\Order_items\Status;
 
 class OrderItem extends Model
 {
     //
+    use HasFactory;
     protected $fillable = [
         'order_id',
         'product_id',
