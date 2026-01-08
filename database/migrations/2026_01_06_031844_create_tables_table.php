@@ -14,9 +14,10 @@ return new class extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table->string('table_number')->unique();
+            $table->integer('table_number')->unique();
             $table->string('qr_code_token')->unique();
             $table ->string('status')->default(Status::EMPTY->value);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

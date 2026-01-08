@@ -12,6 +12,8 @@ class Order extends Model
     //
     protected $fillable = [
         'table_id',
+        'table_number',
+        'status',
     ];
     protected $hidden = [
         'created_at',

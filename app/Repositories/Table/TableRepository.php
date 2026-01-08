@@ -13,4 +13,8 @@ class TableRepository extends BaseRepository implements ItableRepository
     {
         return Table::class;
     }
+    public function all(): object
+    {
+        return $this->model->orderBy('table_number', 'asc')->get();
+    }
 }

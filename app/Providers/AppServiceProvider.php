@@ -7,6 +7,8 @@ use App\Repositories\Order\IOrderRepository;
 use App\Repositories\Order\OrderRepository;
 use App\Repositories\User\IUserRepository;
 use App\Repositories\User\UserRepository;
+use App\Repositories\Table\ITableRepository;
+use App\Repositories\Table\TableRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IUserRepository::class,
             UserRepository::class
+        );
+        $this->app->bind(
+            ITableRepository::class,
+            TableRepository::class
         );
     }
 

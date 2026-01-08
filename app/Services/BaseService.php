@@ -12,9 +12,9 @@ abstract class BaseService
     {
         return $this->repository->Panigate($perPage, $columns, $relations, $attributes);
     }
-    public function getAll($columns = ['*'], $relations = [], $attributes = [])
+    public function getAll()
     {
-        return $this->repository->getAll($columns, $relations, $attributes);
+        return $this->repository->all();
     }
     public function getById($id)
     {

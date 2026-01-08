@@ -16,16 +16,9 @@ abstract class BaseRepository implements IBaseRepository
     {
         $this->model = $model;
     }
-    public function all(array $columns = ['*'], array $relations = [], array $conditions = []): object
+    public function all(): object
     {
-        $query = $this->model->newQuery();
-        if (!empty($conditions)) {
-            $query->where($conditions);
-        }
-        if (!empty($relations)) {
-            $query->with($relations);
-        }
-        return $query->get($columns);
+        return $this->model->newQuery()->get();
     }
     public function paginate(int $perPage = 15, array $columns = ['*'], array $relations = [], array $conditions = []): object
     {
