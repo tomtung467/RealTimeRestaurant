@@ -2,9 +2,7 @@
 namespace App\Services\User;
 
 use App\Repositories\User\IUserRepository;
-use App\Services\User\IUserService;
 use App\Services\BaseService;
-use Nette\Utils\Json;
 
 class UserService extends BaseService implements IUserService
 {

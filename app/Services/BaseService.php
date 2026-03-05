@@ -1,9 +1,10 @@
 <?php
 namespace App\Services;
+use App\Repositories\IBaseRepository;
 abstract class BaseService
 {
-    protected $repository;
-    public function __construct($repository)
+    protected IBaseRepository $repository;
+    public function __construct(IBaseRepository $repository)
     {
         $this->repository = $repository;
     }

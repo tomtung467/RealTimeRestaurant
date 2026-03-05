@@ -24,6 +24,30 @@ class AppServiceProvider extends ServiceProvider
             IUserService::class,
             UserService::class
         );
+        $this ->app->bind(
+            \App\Repositories\Category\ICategoryRepository::class,
+            \App\Repositories\Category\CategoryRepository::class
+        );
+        $this ->app->bind(
+            \App\Services\Category\ICategoryService::class,
+            \App\Services\Category\CategoryService::class
+        );
+        $this ->app->bind(
+            \App\Repositories\Food\IFoodRepository::class,
+            \App\Repositories\Food\FoodRepository::class
+        );
+        $this ->app->bind(
+            \App\Services\Food\IFoodService::class,
+            \App\Services\Food\FoodService::class
+        );
+        $this ->app->bind(
+            \App\Repositories\Ingredient\IIngredientRepository::class,
+            \App\Repositories\Ingredient\IngredientRepository::class
+        );
+        $this ->app->bind(
+            \App\Services\Ingredient\IIngredientService::class,
+            \App\Services\Ingredient\IngredientService::class
+        );
     }
 
     /**
