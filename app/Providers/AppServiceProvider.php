@@ -48,6 +48,22 @@ class AppServiceProvider extends ServiceProvider
             \App\Services\Ingredient\IIngredientService::class,
             \App\Services\Ingredient\IngredientService::class
         );
+            $this ->app->bind(
+                \App\Repositories\Order\IOrderRepository::class,
+                \App\Repositories\Order\OrderRepository::class
+            );
+            $this ->app->bind(
+                \App\Services\Order\IOrderService::class,
+                \App\Services\Order\OrderService::class
+            );
+            $this ->app->bind(
+                \App\Repositories\OrderItem\IOrderItemRepository::class,
+                \App\Repositories\OrderItem\OrderItemRepository::class
+            );
+            $this ->app->bind(
+                \App\Services\OrderItem\IOrderItemService::class,
+                \App\Services\OrderItem\OrderItemService::class
+            );
     }
 
     /**

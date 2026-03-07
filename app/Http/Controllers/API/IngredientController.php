@@ -3,6 +3,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseAPIController;
 use App\Services\Ingredient\IngredientService;
 use App\Traits\ApiResponseTrait;
+use Illuminate\Http\Request;
 
 class IngredientController extends BaseAPIController
 {
@@ -24,5 +25,25 @@ class IngredientController extends BaseAPIController
             return $this->errorResponse('Ingredient not found', 404);
         }
         return $this->successResponse($ingredient, 'Ingredient retrieved successfully');
+    }
+    public function store(Request $request)
+    {
+        $ingredient = $this->ingredientService->create($request->all());
+        return $this->successResponse($ingredient, 'Ingredient created successfully', 201);
+    }
+    public function update(Request $request, $id)
+    {
+        $ingredient = $this->ingredientService->update($id, $request->all());
+        if (!$ingredient) {
+            return $this->errorResponse('Ingredient not found', 404);
+        }
+    }
+    public function destroy($id)
+    {
+        $ingredient = $this->ingredientService->delete($id);
+        if (!$ingredient) {
+            return $this->errorResponse('Ingredient not found', 404);
+        }
+        return $this->successResponse(null, 'Ingredient deleted successfully');
     }
 }

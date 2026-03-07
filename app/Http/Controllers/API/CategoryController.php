@@ -3,6 +3,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\BaseAPIController;
 use App\Services\Category\CategoryService;
 use App\Traits\ApiResponseTrait;
+use Illuminate\Http\Request;
 
 class CategoryController extends BaseAPIController
 {
@@ -25,5 +26,25 @@ class CategoryController extends BaseAPIController
             return $this->errorResponse("Category not found", 404);
         }
         return $this->successResponse($category);
+    }
+    public function store(Request $request)
+    {
+        $category = $this->categoryService->create($request->all());
+        return $this->successResponse($category, "Category created successfully", 201);
+    }
+    public function update(Request $request, $id)
+    {
+        $category = $this->categoryService->update($id, $request->all());
+        if (!$category) {
+            return $this->errorResponse("Category not found", 404);
+        }
+    }
+    public function destroy($id)
+    {
+        $category = $this->categoryService->delete($id);
+        if (!$category) {
+            return $this->errorResponse("Category not found", 404);
+        }
+        return $this->successResponse(null, "Category deleted successfully");
     }
 }
